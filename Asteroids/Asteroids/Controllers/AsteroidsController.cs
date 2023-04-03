@@ -1,6 +1,8 @@
 ﻿using Asteroids.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
+using System.Net;
+using System.Xml.Linq;
 
 namespace Asteroids.Controllers
 {
@@ -17,23 +19,54 @@ namespace Asteroids.Controllers
 
         public IActionResult Index(int number)
         {
-            var model = GetAsteroids(number);
+            ViewData["Json"] = GetAsteroids(number).Result;
             return View();
         }
 
-        private async Task<bool> GetAsteroids(int number)
+        private async Task<string> GetAsteroids(int number)
         {
             NasaApiResult nearEarthObjects = null;
             var startDate = DateTime.Now;
             var endDate = startDate.AddDays(number);
-            HttpResponseMessage response = await client.GetAsync($"{BASE_URL}start_date={startDate.ToString("yyyy-MM-dd")}&end_date={endDate.ToString("yyyy-MM-dd")}{API_KEY}");
+            var url = $"{BASE_URL}start_date={startDate.ToString("yyyy-MM-dd")}&end_date={endDate.ToString("yyyy-MM-dd")}{API_KEY}";
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
 
-            if (response.IsSuccessStatusCode)
+            using (WebResponse response = request.GetResponse())
             {
-                nearEarthObjects = await response.Content.ReadAsAsync<NasaApiResult>();
+                using (Stream strReader = response.GetResponseStream())
+                {
+                    if (strReader == null) 
+                        return string.Empty;
+
+                    using (StreamReader objReader = new StreamReader(strReader))
+                    {
+                        string responseBody = objReader.ReadToEnd();
+                        return responseBody;
+                    }
+                }
             }
 
-            return false;
+            return string.Empty;
+
+
+
+
+            //HttpResponseMessage response = await client.GetAsync($"{BASE_URL}start_date={startDate.ToString("yyyy-MM-dd")}&end_date={endDate.ToString("yyyy-MM-dd")}{API_KEY}");
+
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    var json = await response.Content.ReadAsStringAsync();
+            //    var test = System.Text.Json.JsonSerializer.Deserialize<List<NasaApiResult>>(json);
+            //    return false;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+
         }
 
         

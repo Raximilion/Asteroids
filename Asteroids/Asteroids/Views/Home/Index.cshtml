@@ -17,7 +17,6 @@
     }
 
     function getAsteroids(number){
-        debugger;
         var url = "@Url.Action("Index", "Asteroids", new { number = "param-Number"})";
         url = url.replace("param-Number", number);
         location.href = url;
