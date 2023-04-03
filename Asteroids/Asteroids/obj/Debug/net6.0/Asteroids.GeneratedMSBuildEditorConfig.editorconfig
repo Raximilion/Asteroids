@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\repo\Asteroids\Asteroids\Asteroids
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/repo/Asteroids/Asteroids/Asteroids/Views/Asteroids/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXN0ZXJvaWRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/repo/Asteroids/Asteroids/Asteroids/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

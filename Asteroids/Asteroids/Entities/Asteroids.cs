@@ -1,11 +1,15 @@
-﻿namespace Asteroids.Entities
+﻿using Newtonsoft.Json;
+
+namespace Asteroids.Entities
 {
     public class Asteroids
     {
-        string Name { get; set; }
-        string Diameter { get; set; }
-        string Speed { get; set; }
-        DateTime Date { get; set; }
-        string Planet { get; set; }
+        public string Name { get; set; }
+
+        [JsonProperty("estimated_diameter")]
+        public EstimatedDiameter EstimatedDiameter { get; set; }
+
+        [JsonProperty("close_approach_data")]
+        public List<CloseApproachDatum> CloseApproachData { get; set; }
     }
 }

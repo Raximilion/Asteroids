@@ -24,3 +24,7 @@ C:\repo\Asteroids\Asteroids\Asteroids\obj\Debug\net6.0\refint\Asteroids.dll
 C:\repo\Asteroids\Asteroids\Asteroids\obj\Debug\net6.0\Asteroids.pdb
 C:\repo\Asteroids\Asteroids\Asteroids\obj\Debug\net6.0\Asteroids.genruntimeconfig.cache
 C:\repo\Asteroids\Asteroids\Asteroids\obj\Debug\net6.0\ref\Asteroids.dll
+C:\repo\Asteroids\Asteroids\Asteroids\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\repo\Asteroids\Asteroids\Asteroids\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\repo\Asteroids\Asteroids\Asteroids\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\repo\Asteroids\Asteroids\Asteroids\obj\Debug\net6.0\Asteroids.csproj.CopyComplete
