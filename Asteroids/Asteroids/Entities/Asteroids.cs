@@ -2,7 +2,7 @@
 
 namespace Asteroids.Entities
 {
-    public class Asteroids
+    public class AsteroidsEntity
     {
         public string Name { get; set; }
 
@@ -10,6 +10,6 @@ namespace Asteroids.Entities
         public EstimatedDiameter EstimatedDiameter { get; set; }
 
         [JsonProperty("close_approach_data")]
-        public List<CloseApproachDatum> CloseApproachData { get; set; }
+        public  CloseApproachDatum CloseApproachData { get; set; }
     }
 }

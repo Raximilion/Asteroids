@@ -1,29 +1,24 @@
-﻿@{
+﻿@using Asteroids.Entities
+@model List<AsteroidsEntity>
+@{
     ViewData["Title"] = "Asteroids";
 }
 
-<div class="text-center">
-    <textarea id="area" style="display: none;">
-        @ViewData["Json"]
-    </textarea>
-</div>
-
-<div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-4">
+            <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">
+                        Diametro : @((item.EstimatedDiameter.kilometers.Max * item.EstimatedDiameter.kilometers.Min / 2) * 13.14)<br>
+                        Velocidad : @item.CloseApproachData.RelativeVelocity.Velocity<br>
+                        Fecha: @item.CloseApproachData.Date<br>
+                        Planeta : @item.CloseApproachData.OrbitingBody
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
+    }
 </div>
-
-<script>
-    window.addEventListener("load", (event) => {
-        var text = document.getElementById("area").value;
-        var json = JSON.parse(text);
-        console.log("Json: ");
-        debugger;
-        console.log(json);
-    });
-</script>
