@@ -4,14 +4,21 @@
 
 <div class="text-center">
     <div class="input-group mb-3">
-        <input id="number" type="text" class="form-control" placeholder="Recipient's username" aria-label="Enter a number from 1 to 7" aria-describedby="basic-addon2">
-        <button type="button" class="btn btn-dark" onclick="sendRequest()">Send Request</button>
+        <input id="number" type="text" class="form-control" placeholder="Introduce un numero del 1 al 7 segun los asteroides que quieras ver"  aria-describedby="basic-addon2">
+        <button type="button" class="btn btn-dark" onclick="sendRequest()">Buscar Asteroides</button>
     </div>
 </div>
 
 <script>
+
     function sendRequest() {
-        var number = document.getElementById("number").value;
-        (number > 0 && number < 8) ? console.log("True") : alert("the number must be between 1 and 7");
+        var inputValue = document.getElementById("number").value;
+        (inputValue > 0 && inputValue < 8) ? getAsteroids(inputValue) : alert("the number must be between 1 and 7");
+    }
+
+    function getAsteroids(number){
+        var url = "@Url.Action("Index", "Asteroids", new { number = "param-Number"})";
+        url = url.replace("param-Number", number);
+        location.href = url;
     }
 </script>
